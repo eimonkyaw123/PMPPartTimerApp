@@ -108,7 +108,7 @@
     NSLog(@"user ID :%d",pID);
     NSLog(@"sesion ID :%@",sessionID);
     if (pID !=0) {
-        NSString * baseURL = @"http:/192.168.1.47:8080/api/parttimer/preferenceList.htm?json=";
+        NSString * baseURL = @"http:/192.168.1.47:8080/api/parttimer/checkPartTimerInfo.htm?json=";
         NSString *data=[NSString stringWithFormat:@"{\"partTimerId\":\"%d\",\"sessionId\":\"%@\"}",pID  ,sessionID];
        [self.li showLoading:self.view animated:YES];
         [self.s sendDataToServer:POST_METHOD JsonData:data sendURl:baseURL body:nil];
@@ -243,9 +243,17 @@
         
         [self.navigationController presentViewController:vc animated:true completion:nil];
     }
+    else if (self.code == 1010)
+    {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        TabViewController *vc = [mainStoryboard instantiateViewControllerWithIdentifier:@"TabViewController"];
+      [vc setSelectedIndex:2];
+        [self.navigationController presentModalViewController:vc animated:YES];
+        
+    }
     else if (self.code == 1014)
     {
-         [self performSegueWithIdentifier:@"Preference" sender:self];
+        [self performSegueWithIdentifier:@"Preference" sender:self];
     }
     else
     {

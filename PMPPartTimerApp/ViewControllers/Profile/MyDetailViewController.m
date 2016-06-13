@@ -1104,10 +1104,10 @@
 -(void)getProfileData
 {
    // NSString *bankURL = @"http://192.168.1.47:8080/api/parttimer/getPartTimerInfo.htm?json=";
-    NSString *bankURL = @"http://ihughos.com/api/parttimer/getPartTimerInfo.htm?json=";
+   // NSString *bankURL = @"http://ihughos.com/api/parttimer/getPartTimerInfo.htm?json=";
    NSString *data = [NSString stringWithFormat:@"{\"partTimerId\":\"%d\",\"sessionId\":\"%@\"}",userID,sessionID];
     // NSString *data = [NSString stringWithFormat:MyDetailJSON,userID,sessionID];
-       [s sendDataToServer:POST_METHOD JsonData:data sendURl:GetMyDetailURL body:nil];
+       [s sendDataToServer:POST_METHOD JsonData:data sendURl:[NSString stringWithFormat:@"%@%@",API_DOMAIN_PATH,API_URL_GET_PARTTIMER_PROFILE_INFO] body:nil];//
 }
 
 - (IBAction)ChooseUniformAction:(id)sender {

@@ -49,7 +49,7 @@
     s= [[Service alloc]init];
     s.serviceDelegate = self;
      li = [[LoadingImageViewController alloc]init];
-     [li showLoading:self.view animated:YES];
+    // [li showLoading:self.view animated:YES];
     userID = [[[NSUserDefaults standardUserDefaults] valueForKey:@"parttimerId"]integerValue];
     sessionID = [[NSUserDefaults standardUserDefaults] valueForKey:@"sessionId"];
 

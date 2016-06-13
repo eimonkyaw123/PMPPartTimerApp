@@ -30,7 +30,7 @@
     NSString *ListLocation;
     NSString *ListTime;
     NSString *ListPrice;
-    NSInteger ListType;
+    int ListType;
     Service *s;
 
     int page;

@@ -97,7 +97,20 @@
     cell.j_date.text = c_dateTime;//[[recipes objectAtIndex:indexPath.row]objectForKey:@"date"];
      cell.j_location.image  = [UIImage imageNamed:@"ic-common-loc@2x.png"];
       //cell.j_image.image = [UIImage imageNamed:@"ic-job-list-usher.png"];
-     cell.j_image.image  = [UIImage imageNamed:@"ic-job-pref-usher-color@2x.png"];
+    
+    if (![[recipes objectAtIndex:indexPath.row]objectForKey:@"imagepath"]) {
+        cell.j_image.image  = [UIImage imageNamed:@"ic-signup-logo@2x.png"];
+        
+    }
+    else
+    {
+        NSString *imageURL = [[recipes objectAtIndex:indexPath.row]objectForKey:@"imagepath"];
+        NSData *urlData= [NSData dataWithContentsOfURL:[NSURL URLWithString:imageURL]];
+        
+        cell.j_image.image  = [UIImage imageWithData:urlData];
+    }
+
+  //   cell.j_image.image  = [UIImage imageNamed:@"ic-job-pref-usher-color@2x.png"];
     cell.j_place.text = [[recipes objectAtIndex:indexPath.row]objectForKey:@"postalcodedivision"];
     cell.j_price.text =[NSString stringWithFormat:@"$%@", [[recipes objectAtIndex:indexPath.row]objectForKey:@"total"]];
     cell.j_unit.text = @"per hour";
